@@ -1,0 +1,307 @@
+{
+	"info": {
+		"_postman_id": "36d49edb-304e-406b-8306-0d1b1064a880",
+		"name": "Prueba-Movimiento-Cuenta",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8336164",
+		"_collection_link": "https://warped-shadow-559715.postman.co/workspace/New-Team-Workspace~325833e1-3562-4a63-a04b-1e228802cc2c/collection/8336164-36d49edb-304e-406b-8306-0d1b1064a880?action=share&source=collection_link&creator=8336164"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Get cliente by identificacion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9992/person-customer/customers/1314593672",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9992",
+							"path": [
+								"person-customer",
+								"customers",
+								"1314593672"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"identification\": \"1314593673\",\r\n    \"idGen\": \"M\",\r\n    \"name\": \"Luis Garcia\",\r\n    \"age\": 28,\r\n    \"address\": \"La Condamine\",\r\n    \"phone\": \"0980226811\",\r\n    \"password\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9992/person-customer/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9992",
+							"path": [
+								"person-customer",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"identification\": \"1314593672\",\r\n    \"idGen\": \"M\",\r\n    \"name\": \"Luis Chichanda\",\r\n    \"age\": 30,\r\n    \"address\": \"La Condamine\",\r\n    \"phone\": \"0980226810\",\r\n    \"password\": \"54321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9992/person-customer/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9992",
+							"path": [
+								"person-customer",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "disable cliente",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9992/person-customer/customers/disable?id=1314593672",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9992",
+							"path": [
+								"person-customer",
+								"customers",
+								"disable"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1314593672"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cuenta",
+			"item": [
+				{
+					"name": "crear cuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"identification\": \"1314593672\",\r\n    \"idTcu\": \"A\",\r\n    \"accountNumber\": \"1111111111\",\r\n    \"initialBalance\": 200.50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9992/person-customer/accounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9992",
+							"path": [
+								"person-customer",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "disable cuenta",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9992/person-customer/accounts/disable?accountNumber=11111111111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9992",
+							"path": [
+								"person-customer",
+								"accounts",
+								"disable"
+							],
+							"query": [
+								{
+									"key": "accountNumber",
+									"value": "11111111111"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "no tomar en cuenta",
+			"item": [
+				{
+					"name": "http://localhost:9991/movements-account/accounts",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idCli\": \"e66b3e7a-cf5f-ee11-acde-98fa9b866735\",\r\n    \"idTcu\": \"A\",\r\n    \"accountNumber\": \"1111111111\",\r\n    \"initialBalance\": 200.50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9991/movements-account/accounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9991",
+							"path": [
+								"movements-account",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:9991/movements-account/accounts/disable?accountNumber=1111111111",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9991/movements-account/accounts/disable?accountNumber=1111111111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9991",
+							"path": [
+								"movements-account",
+								"accounts",
+								"disable"
+							],
+							"query": [
+								{
+									"key": "accountNumber",
+									"value": "1111111111"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:9991/movements-account/movements",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\": \"1111111111\",\r\n    \"idTmo\": \"R\",\r\n    \"value\": 150\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9991/movements-account/movements",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9991",
+							"path": [
+								"movements-account",
+								"movements"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "movimiento",
+			"item": [
+				{
+					"name": "crear movimiento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\": \"1111111111\",\r\n    \"idTmo\": \"R\",\r\n    \"value\": 150\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9992/person-customer/movements",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9992",
+							"path": [
+								"person-customer",
+								"movements"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
