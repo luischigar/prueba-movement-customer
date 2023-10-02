@@ -15,7 +15,10 @@ import com.api.movementsaccount.service.mapper.AccountMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -29,15 +32,11 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountDto getAccountByAccountNumber(String accountNumber) throws ResourceNotFoundException {
-        Optional<Account> accountOptional = accountRepository.getAccountByAccountNumber(accountNumber);
-        if(accountOptional.isPresent()){
-            return accountMapper.accountToAccountDto(
-                    accountOptional.get()
-            );
-        }else {
-            throw new ResourceNotFoundException(MessageMistakes.wasAbleToFindTheResource(accountNumber));
-        }
+    public List<AccountDto> getActiveAccountsByIdCli(String idCli) throws ResourceNotFoundException {
+        if(idCli == null || "".equals(idCli)) throw new ResourceNotFoundException(MessageMistakes.NULL_OR_EMPTY);
+        return accountRepository.getActiveAccountsByIdCli(idCli).stream()
+                        .map(accountMapper::accountToAccountDto)
+                        .collect(Collectors.toList());
     }
 
     @Override

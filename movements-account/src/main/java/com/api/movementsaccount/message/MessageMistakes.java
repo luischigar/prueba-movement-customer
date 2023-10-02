@@ -5,6 +5,7 @@ public final class MessageMistakes {
         throw new IllegalStateException("Utility class");
     }
     public static final String DOES_NOT_HAVE_SUFFICIENT_BALANCE = "No cuenta con saldo suficiente";
+    public static final String NULL_OR_EMPTY = "Campo nulo o vacio";
     public static String wasAbleToFindTheResource(String id){
         return "No se pudo encontrar el recurso con el Id: " + id;
     }

@@ -5,6 +5,8 @@ import com.api.movementsaccount.exception.ResourceNotFoundException;
 import com.api.movementsaccount.service.AccountService;
 import com.api.movementsaccount.service.dto.AccountDto;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,10 @@ public class AccountController {
     @Autowired
     public AccountController(AccountService accountService){
         this.accountService = accountService;
+    }
+    @GetMapping("/active-accounts")
+    public ResponseEntity<?> getActiveAccountsByIdCli(String idCli) throws ResourceNotFoundException {
+        return new ResponseEntity<>(accountService.getActiveAccountsByIdCli(idCli),HttpStatus.OK);
     }
     @PostMapping
     public ResponseEntity<?> saveAccount(@Valid @RequestBody AccountDto accountDto) throws AtAlreadyExistsException {
