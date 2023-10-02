@@ -28,6 +28,7 @@ public class MovementByClientAndDateAndPageImpl implements ReportMovementReposit
         String filter = "";
 
         filter = filterIdentification(pagingDto ,filter);
+        filter = addFilter(filter);
         filter = filterDate(dateInit, dateFin, filter);
 
         if (!filter.isEmpty()) {
@@ -67,6 +68,9 @@ public class MovementByClientAndDateAndPageImpl implements ReportMovementReposit
             filter +=(validationAndWhere(filter)+" (m.account.customer.person.identification = :xIdentification)");
         }
         return filter;
+    }
+    private String addFilter(String filter) {
+        return filter + (validationAndWhere(filter)+" (m.account.state = true AND m.account.customer.state = true)");
     }
     private String filterDate(LocalDate dateInit, LocalDate dateFin, String filter) {
         if (dateInit != null && dateFin != null) {

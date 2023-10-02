@@ -18,6 +18,8 @@ public class Customer {
     @ManyToOne
     @JoinColumn(name = "IDENTIFICACION",nullable = false,foreignKey = @ForeignKey(name = "FK_CLIENTE_PERSONA"))
     private Person person;
+    @Column(name = "ESTADO",nullable = false)
+    private Boolean state;
     public Customer(String idCli){
         this.idCli = idCli;
     }
