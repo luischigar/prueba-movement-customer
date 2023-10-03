@@ -5,8 +5,6 @@ import com.api.movementsaccount.exception.ResourceNotFoundException;
 import com.api.movementsaccount.service.AccountService;
 import com.api.movementsaccount.service.dto.AccountDto;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
