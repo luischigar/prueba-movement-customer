@@ -266,6 +266,73 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "http://localhost:9991/movements-account/movements/report?dateInit=2023-10-01&dateFin=2023-10-02",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": 0,\r\n    \"size\": 10,\r\n    \"filter\": \"1314593672\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9991/movements-account/movements/report?dateInit=2023-10-01&dateFin=2023-10-02",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9991",
+							"path": [
+								"movements-account",
+								"movements",
+								"report"
+							],
+							"query": [
+								{
+									"key": "dateInit",
+									"value": "2023-10-01"
+								},
+								{
+									"key": "dateFin",
+									"value": "2023-10-02"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cuentas activas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9991/movements-account/accounts/active-accounts?idCli=e66b3e7a-cf5f-ee11-acde-98fa9b866735",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9991",
+							"path": [
+								"movements-account",
+								"accounts",
+								"active-accounts"
+							],
+							"query": [
+								{
+									"key": "idCli",
+									"value": "e66b3e7a-cf5f-ee11-acde-98fa9b866735"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -296,6 +363,46 @@
 							"path": [
 								"person-customer",
 								"movements"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reporte Movimientos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": 0,\r\n    \"size\": 10,\r\n    \"filter\": \"1314593672\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9992/person-customer/movements/report?dateInit=2023-10-01&dateFin=2023-10-02",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9992",
+							"path": [
+								"person-customer",
+								"movements",
+								"report"
+							],
+							"query": [
+								{
+									"key": "dateInit",
+									"value": "2023-10-01"
+								},
+								{
+									"key": "dateFin",
+									"value": "2023-10-02"
+								}
 							]
 						}
 					},
