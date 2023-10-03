@@ -11,4 +11,7 @@ Cliente: la es el género (M) que significa masculino y (F) femenino.
 Cuenta es el tipo de cuenta (A) que significa Ahorro y (C) corriente.
 Movimiento es el tipo de movimiento (R) que significa retiro y (D) deposito.
 
-Dato adicional en el repositorio podemos encontrar el Json del postman y la base de dato en sql server
+Dato adicional en el repositorio podemos encontrar el Json del postman y la base de dato en sql server.
+
+cuando esten corriendo los dos proyectos, con la siguiente url podemos observar de mejor manera las Apis disponibles.
+http://localhost:9992/person-customer/swagger-ui/index.html
