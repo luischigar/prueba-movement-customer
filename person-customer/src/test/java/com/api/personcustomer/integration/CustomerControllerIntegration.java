@@ -6,6 +6,7 @@ import com.api.personcustomer.model.Person;
 import com.api.personcustomer.repository.CustomerRepository;
 import com.api.personcustomer.service.dto.CustomerDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -63,11 +64,14 @@ class CustomerControllerIntegration {
         Mockito.when(customerRepository.getCustomerByIdentification(Mockito.anyString())).thenReturn(Optional.ofNullable(null));
         mvc.perform(MockMvcRequestBuilders.get("/customers/"+ID)
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isExpectationFailed());
+                .andExpect(MockMvcResultMatchers.status().isExpectationFailed())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.code", Matchers.is("417 EXPECTATION_FAILED")));
     }
     @Test
     void saveCustomer() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.post("/customers").contentType(MediaType.APPLICATION_JSON)
-                .content(mapperJson.writeValueAsString(customerDto))).andExpect(MockMvcResultMatchers.status().is(400));
+        mvc.perform(MockMvcRequestBuilders.post("/customers")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapperJson.writeValueAsString(customerDto)))
+                .andExpect(MockMvcResultMatchers.status().is(400));
     }
 }
