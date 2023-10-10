@@ -1,5 +1,6 @@
 package com.api.personcustomer.integration;
 
+import com.api.personcustomer.PersonCustomerApplication;
 import com.api.personcustomer.model.Customer;
 import com.api.personcustomer.model.Gender;
 import com.api.personcustomer.model.Person;
@@ -16,6 +17,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -23,23 +25,19 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.Optional;
 
-@SpringBootTest
+@SpringBootTest(
+        webEnvironment = SpringBootTest.WebEnvironment.MOCK,
+        classes = PersonCustomerApplication.class
+)
 @AutoConfigureMockMvc
+@TestPropertySource(
+        locations = "classpath:application-integration-test.properties")
 @ExtendWith(SpringExtension.class)
 class CustomerControllerIntegration {
     @Autowired
     private MockMvc mvc;
     @MockBean
     private CustomerRepository customerRepository;
-    private static final String JSON = "{\n" +
-            "    \"identification\": \"hola\",\n" +
-            "    \"idGen\": \"MM\",\n" +
-            "    \"name\": \"hola\",\n" +
-            "    \"age\": 18,\n" +
-            "    \"address\": \"hola\",\n" +
-            "    \"phone\": \"hola\",\n" +
-            "    \"password\": \"hola\"\n" +
-            "}";
     private final ObjectMapper mapperJson = new ObjectMapper();
     private static final String ID = "3EC8F430-A85B-4384-874B-0017D7893AB6";
     private Customer customer;
